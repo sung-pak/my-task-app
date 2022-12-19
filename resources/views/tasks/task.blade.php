@@ -11,7 +11,7 @@
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="/tasks">All</a></li>
-        @foreach($task->unique('group') as $group)
+        @foreach($task->unique('group')->sortBy('group', SORT_NATURAL|SORT_FLAG_CASE) as $group)
           <li><a class="dropdown-item" href="{{ route('tasks.show', $group->group)}}">{{$group->group}}</a></li>
         @endforeach
       </ul>
