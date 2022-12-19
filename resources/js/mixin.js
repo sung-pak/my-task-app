@@ -2,9 +2,10 @@
 function ajaxSend(obj){
   //console.log(obj)
   obj = JSON.stringify(obj);
-
+  // async true, otherwise: Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user’s experience.
+  
   $.ajax({ type: "POST",
-    async: false,
+    async: true,
     url: "/update-task",
     data: {data:obj},
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},

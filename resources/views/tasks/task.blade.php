@@ -12,15 +12,13 @@
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="/tasks">All</a></li>
         @php
-        $groupArr = array();
-        foreach ($task as $key => $value) {
-          $t1 = strtolower( $value->group );
-          $groupArr[]= $t1;
-        }
-        $groupArr = array_unique($groupArr);
-        sort($groupArr);
-
-
+          $groupArr = array();
+          foreach ($task as $key => $value) {
+            $t1 = strtolower( $value->group );
+            $groupArr[]= $t1;
+          }
+          $groupArr = array_unique($groupArr);
+          sort($groupArr);
         @endphp
         {{-- $task->unique('group')->sortBy('group', SORT_NATURAL|SORT_FLAG_CASE)  --}}
         @foreach($groupArr as $group)
