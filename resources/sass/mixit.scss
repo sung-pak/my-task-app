@@ -1,6 +1,27 @@
 
-#nav1{
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
+.container{
+
+  opacity: 1;
+
+  &.show{
+    -webkit-animation: fadein .2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein .2s; /* Firefox < 16 */
+        -ms-animation: fadein .2s; /* Internet Explorer */
+         -o-animation: fadein .2s; /* Opera < 12.1 */
+            animation: fadein .2s;
+  }
+
+  &.hide{
+    display:none;
+  }
+}
+
+#nav1{
   margin-bottom: 30px;
   
   .dropdown{
@@ -14,11 +35,13 @@ table{
 
     &:hover{
       background-color: beige;
+
+      &.dragging{
+        background-color: bisque;
+      }
+  
     }
 
-    &.dragging{
-      background-color: beige;
-    }
 
     td{
       

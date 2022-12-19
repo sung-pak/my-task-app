@@ -7,7 +7,7 @@
 	</div>
   <div class="row g-3 align-items-center">
      
-    <form method="post" action="{{ env('APP_URL') . '/tasks/' . $task->id  }}">
+    <form method="post" action="{{ '/tasks/' . $task->id  }}">
       @method('PATCH') 
       @csrf
       <div class="col-md-6"> 
