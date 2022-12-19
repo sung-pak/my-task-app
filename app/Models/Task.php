@@ -27,7 +27,7 @@ class Task extends Model
          return $taskObj;
     }
 
-    public function updateTask($id1, $id2){
+    public function updateRow($id1, $id2){
 
       try{
         DB::table('tasks')

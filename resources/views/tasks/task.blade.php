@@ -3,7 +3,7 @@
 <div class="row">
   <h1>My Tasks</h1>
   <div>
-    <a href="{{ route('tasks.create')}}" >Create Task</a>
+    <a href="/">{{--<i class="fa-solid fa-bars"></i>--}} home</a> <a href="{{ route('tasks.create')}}" >Create Task</a>
   </div>
   <div class="result"></div>
   <table id="table-1">

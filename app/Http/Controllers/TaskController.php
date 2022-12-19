@@ -120,10 +120,10 @@ class TaskController extends Controller
       $obj =  $request->all();
       $orderArr = json_decode($obj['data']);
 
-      foreach ($orderArr as $arr => $ii){
-        $i2 = $arr + 1;
+      foreach ($orderArr as $key => $value){
+        $k2 = $key + 1;
         $task = New Task;
-        $task = $task->updateTask($ii, $i2);
+        $task = $task->updateRow($value, $k2);
       }
       
       return json_encode(array("success"=>1));
