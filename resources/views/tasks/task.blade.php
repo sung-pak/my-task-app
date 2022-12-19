@@ -3,7 +3,7 @@
 <div class="row">
   <h1>My Tasks</h1>
   <div id="nav1">
-    <a class="btn btn-primary" href="/" role="button">Home</a> |  <a class="btn btn-info" href="{{ route('tasks.create')}}" role="button">Create Task</a>
+    <a class="btn btn-primary" href="/" role="button">Home</a> |  <a class="btn btn-info" href="{{ env('APP_URL') . '/tasks/create' }}" role="button">Create Task</a>
     |
     <div class="dropdown">
       <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -21,8 +21,8 @@
           sort($groupArr);
         @endphp
         {{-- $task->unique('group')->sortBy('group', SORT_NATURAL|SORT_FLAG_CASE)  --}}
-        @foreach($groupArr as $group)
-          <li><a class="dropdown-item" href="{{ route('tasks.show', $group)}}">{{$group}}</a></li>
+        @foreach($groupArr as $group)  
+          <li><a class="dropdown-item" href="{{ env('APP_URL') . '/tasks/' . $group }}">{{$group}}</a></li>
         @endforeach
       </ul>
     </div>
@@ -66,10 +66,10 @@
               <td class="priority">{{$task->priority}}</td>
               <td>{{$task->updated_at}}</td>
               <td>
-                  <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-info">Edit</a>
+                  <a href="{{ env('APP_URL') . '/tasks/' . $task->id . '/edit' }}" class="btn btn-info">Edit</a>
               </td>
               <td>
-                  <form action="{{ route('tasks.destroy', $task->id) }}" method="post">
+                  <form action="{{ env('APP_URL') . '/tasks/' . $task->id }}" method="post">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-secondary">Delete</button>
