@@ -2,20 +2,28 @@
 @section('main')
 <div class="row">
   <h1>Create</h1>
-  <div>
-    <a href="/tasks">Back</a>
+  <div id="nav1">
+    <a class="btn btn-primary" href="/tasks" role="button">Back</a>
   </div>
-  <form method="post" action="{{ route('tasks.store') }}">
+  <div class="row g-3 align-items-center">
+    <form method="post" action="{{ route('tasks.store') }}" >
       @csrf
-      <div>    
-          <label for="name">Name</label>
-          <input type="text" name="name"/>
+      <div class="col-md-6"> 
+          <label for="group" class="form-label">Group</label>
+          <input type="text" name="group" class="form-control"/>
       </div>
-      <div>
-          <label for="priority">Priority</label>
-          <input type="number" name="priority"/>
+      <div class="col-md-6"> 
+          <label for="name" class="form-label">Name</label>
+          <input type="text" name="name" class="form-control"/>
       </div>
-      <button type="submit">Add</button>
-  </form>
+      <div class="col-md-6">
+          <label for="priority" class="form-label">Priority</label>
+          <input type="number" name="priority" class="form-control"/>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
 </div>
 @endsection
