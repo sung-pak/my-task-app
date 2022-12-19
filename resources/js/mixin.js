@@ -27,6 +27,10 @@ function ajaxSend(obj){
 
 $(document).ready(function() {
 
+  if( $('.container').hasClass('hide') ){
+    $('.container').removeClass('hide').addClass('show');
+  }
+
   let tt = $("#table-1").tableDnD({
     onDragClass: "dragging",
 		onDrop: function(table, row) {
