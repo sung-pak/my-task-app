@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
+
+
 class Task extends Model
 {
     use HasFactory;
@@ -16,11 +18,24 @@ class Task extends Model
     ];
 
     public function getall(){
+
         $taskObj = DB::table('tasks')
             ->orderBy('priority', 'asc')
             ->orderBy('name', 'asc')
             ->get();
 
          return $taskObj;
+    }
+
+    public function updateTask($id1, $id2){
+
+      try{
+        DB::table('tasks')
+          ->where('id', $id1)
+          ->update(array('priority'=> $id2));
+      } catch(e){
+        
+      }
+        
     }
 }

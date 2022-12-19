@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Task;
 
+use Illuminate\Support\Facades\Auth;
+
 class TaskController extends Controller
 {
     /**
@@ -111,5 +113,19 @@ class TaskController extends Controller
         $task->delete();
  
         return redirect('/tasks')->with('success', 'Task deleted.'); 
+    }
+
+    public function updateTask(Request $request){
+
+      $obj =  $request->all();
+      $orderArr = json_decode($obj['data']);
+
+      foreach ($orderArr as $arr => $ii){
+        $i2 = $arr + 1;
+        $task = New Task;
+        $task = $task->updateTask($ii, $i2);
+      }
+      
+      return json_encode(array("success"=>1));
     }
 }

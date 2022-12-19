@@ -5,23 +5,27 @@
   <div>
     <a href="{{ route('tasks.create')}}" >Create Task</a>
   </div>
-  <table>
+  <div class="result"></div>
+  <table id="table-1">
     <thead>
         <tr>
+          <!-- <td width="4%"></td> -->
           <td>Id</td>
           <td>Name</td>
           <td>Priority</td>
           <td>Timestamp</td>
-          <td>Edit</td>
-          <td>Delete</td>
+          <td>Modify</td>
+          <td>[x]</td>
         </tr>
     </thead>
     <tbody>
         @foreach($task as $task)
-        <tr>
-            <td>{{$task->id}}</td>
+        @php($count= $loop->index + 1)
+        <tr id="{{$count}}">
+            <!-- <td> <span>∙</span><span>∙</span><span>∙</span></td> -->
+            <td  class="id">{{$task->id}}</td>
             <td>{{$task->name}} </td>
-            <td>{{$task->priority}}</td>
+            <td class="priority">{{$task->priority}}</td>
             <td>{{$task->updated_at}}</td>
             <td>
                 <a href="{{ route('tasks.edit', $task->id) }}">Edit</a>
