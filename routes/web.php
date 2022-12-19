@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::resource('tasks', 'App\Http\Controllers\TaskController');
+
+Route::post('/update-task', 'App\Http\Controllers\TaskController@updateTask');

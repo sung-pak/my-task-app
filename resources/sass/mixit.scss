@@ -1,0 +1,28 @@
+table{
+  tr{
+    //position: absolute;
+
+    &.dragging{
+      background-color: beige;
+    }
+
+    td{
+      &:first-child{
+        //margin-top: -2px;
+        
+         span{
+          //width: 100%;
+          //display: block;
+         //clear: both;
+          line-height: .4em;
+          font-weight: 100;
+          /* &:first-child{
+            margin-top:-8px;
+          } */
+         }
+      }
+    }
+  }
+  
+}
+
