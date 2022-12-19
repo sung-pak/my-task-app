@@ -22,7 +22,7 @@ class TaskController extends Controller
 
         return view('tasks.task', compact('task'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -42,10 +42,12 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'group'=>'required',
             'name'=>'required'
         ]); 
 
         $task = new task([
+            'group' => $request->get('group'),
             'name' => $request->get('name'),
             'priority' => $request->get('priority')
         ]);
@@ -61,9 +63,18 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id=null)
     {
-        //
+      $task = New Task;
+      //if($id==''||$id==null){
+      $task = $task->getall();
+      // }else{
+      //   $task = $task->all()->where('group', $id);
+      // }
+
+      $idArr = array('filterId'=>$id);
+
+      return view('tasks.task', compact('task'), $idArr);
     }
 
     /**
