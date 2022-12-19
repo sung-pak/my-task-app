@@ -3,16 +3,28 @@
 <div class="row">
   <h1>My Tasks</h1>
   <div id="nav1">
-    <a class="btn btn-primary" href="/" role="button">Home</a> |  <a class="btn btn-primary" href="{{ route('tasks.create')}}" role="button">Create Task</a>
+    <a class="btn btn-primary" href="/" role="button">Home</a> |  <a class="btn btn-info" href="{{ route('tasks.create')}}" role="button">Create Task</a>
     |
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+      <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
         Groups
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="/tasks">All</a></li>
-        @foreach($task->unique('group')->sortBy('group', SORT_NATURAL|SORT_FLAG_CASE) as $group)
-          <li><a class="dropdown-item" href="{{ route('tasks.show', $group->group)}}">{{$group->group}}</a></li>
+        @php
+        $groupArr = array();
+        foreach ($task as $key => $value) {
+          $t1 = strtolower( $value->group );
+          $groupArr[]= $t1;
+        }
+        $groupArr = array_unique($groupArr);
+        sort($groupArr);
+
+
+        @endphp
+        {{-- $task->unique('group')->sortBy('group', SORT_NATURAL|SORT_FLAG_CASE)  --}}
+        @foreach($groupArr as $group)
+          <li><a class="dropdown-item" href="{{ route('tasks.show', $group)}}">{{$group}}</a></li>
         @endforeach
       </ul>
     </div>
@@ -41,7 +53,7 @@
 
           $class='';
           if(isset($filterId)){
-            if($filterId==$task->group){}
+            if( strtolower($filterId)==strtolower($task->group) ){}
             else{
               $class='d-none';
             }
