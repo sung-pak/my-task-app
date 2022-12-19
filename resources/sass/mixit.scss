@@ -12,11 +12,16 @@ table{
   tr{
     //position: absolute;
 
+    &:hover{
+      background-color: beige;
+    }
+
     &.dragging{
       background-color: beige;
     }
 
     td{
+      
       &:first-child{
         //margin-top: -2px;
         

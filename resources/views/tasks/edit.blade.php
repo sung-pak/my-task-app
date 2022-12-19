@@ -6,7 +6,8 @@
     <a class="btn btn-primary" href="/tasks" role="button">Back</a>
 	</div>
   <div class="row g-3 align-items-center">
-    <form method="post" action="{{ route('tasks.update', $task->id) }}">
+     
+    <form method="post" action="{{ env('APP_URL') . '/tasks/' . $task->id  }}">
       @method('PATCH') 
       @csrf
       <div class="col-md-6"> 

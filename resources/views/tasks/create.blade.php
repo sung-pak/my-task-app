@@ -6,7 +6,7 @@
     <a class="btn btn-primary" href="/tasks" role="button">Back</a>
   </div>
   <div class="row g-3 align-items-center">
-    <form method="post" action="{{ route('tasks.store') }}" >
+    <form method="post" action="{{ env('APP_URL') . '/tasks' }}" >
       @csrf
       <div class="col-md-6"> 
           <label for="group" class="form-label">Group</label>
